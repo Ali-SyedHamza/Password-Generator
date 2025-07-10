@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Code View</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white p-6 flex flex-col items-center min-h-screen justify-center">
+
+  <h1 class="text-2xl font-bold mb-6">🔍 JavaScript Code</h1>
+
+  <pre class="bg-gray-800 p-4 rounded overflow-auto text-sm leading-relaxed whitespace-pre-wrap w-full max-w-3xl">
+function makePassword() {
+  var passwordLength = Number(document.getElementById("length").value);
+  var includeUppercase = document.getElementById("uppercase").checked;
+  var includeNumbers = document.getElementById("numbers").checked;
+  var includeSymbols = document.getElementById("symbols").checked;
+  var outputBox = document.getElementById("output");
+
+  if (isNaN(passwordLength)) {
+    alert("❌ Please enter a valid number for length.");
+    outputBox.textContent = "(New PASSWORD)";
+    return;
+  }
+
+  if (passwordLength < 4 || passwordLength > 16) {
+    alert("❌ Length must be between 4 and 16.");
+    outputBox.textContent = "(New PASSWORD)";
+    return;
+  }
+
+  var lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+  var uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numberCharacters = "0123456789";
+  var symbolCharacters = "!@#$%^&*";
+
+  var allCharacters = lowercaseLetters;
+  if (includeUppercase) { allCharacters += uppercaseLetters; }
+  if (includeNumbers) { allCharacters += numberCharacters; }
+  if (includeSymbols) { allCharacters += symbolCharacters; }
+
+  if (allCharacters.length === 0) {
+    alert("❌ No characters available to generate password.");
+    outputBox.textContent = "(New PASSWORD)";
+    return;
+  }
+
+  var generatedPassword = "";
+  for (var i = 0; i < passwordLength; i = i + 1) {
+    var resultantIndex = Math.floor(Math.random() * allCharacters.length);
+    generatedPassword += allCharacters.charAt(resultantIndex);
+  }
+
+  outputBox.textContent = generatedPassword;
+}
+
+function copyPassword() {
+  var copiedText = document.getElementById("output").textContent;
+  if (copiedText === "" || copiedText === "(New PASSWORD)") {
+    alert("Nothing to copy.");
+    return;
+  }
+
+  navigator.clipboard.writeText(copiedText);
+  alert("✅ Password copied to clipboard!");
+}
+  </pre>
+
+  <a href="index.html" class="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+    ⬅ Back to Generator
+  </a>
+
+</body>
+</html>

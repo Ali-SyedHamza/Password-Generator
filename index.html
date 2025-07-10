@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Password Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen p-4 flex flex-col items-center justify-center bg-gray-900 text-white">
+
+  <div class="w-full max-w-md bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <h1 class="text-2xl font-bold text-center mb-4">🔐 Password Generator</h1>
+
+    <label class="block mb-2 text-base">Password Length (4 to 16):</label>
+    <input id="length" type="number" value="8" class="w-full p-2 text-black rounded mb-4">
+
+    <label class="block mb-2 text-base">
+      <input type="checkbox" id="uppercase"> Include Uppercase
+    </label>
+    <label class="block mb-2 text-base">
+      <input type="checkbox" id="numbers"> Include Numbers
+    </label>
+    <label class="block mb-4 text-base">
+      <input type="checkbox" id="symbols"> Include Symbols
+    </label>
+
+    <button onclick="makePassword()" class="bg-blue-600 hover:bg-blue-700 w-full py-2 rounded text-base">
+      Generate
+    </button>
+
+    <div class="mt-4 bg-gray-700 p-2 rounded text-center relative min-h-[48px]">
+      <span id="output" class="select-all break-words text-base">(New PASSWORD)</span>
+      <button onclick="copyPassword()" title="Copy password"
+        class="absolute top-2 right-2 text-gray-300 hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             fill="none" viewBox="0 0 24 24"
+             stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h6m4-16h2a2 2 0 012 2v12a2 2 0 01-2 2h-2M8 4a2 2 0 012-2h4a2 2 0 012 2m-6 0h4"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <footer class="mt-6 text-sm text-gray-400 flex flex-col items-center gap-2">
+    <span>Assignment No. 9 by Hamza</span>
+    <a href="code.html" class="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded">
+      🔓 View JS Code
+    </a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
